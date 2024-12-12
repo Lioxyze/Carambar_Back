@@ -20,9 +20,4 @@ export class BlagueController {
   GetBlagueViaId(@Param('id') id: string) {
     return this.blagueService.GetBlagueViaId(Number(id));
   }
-
-  // @Get('/blague/random')
-  // getRandomBlague() {
-  //   return this.blagueService.getRandomBlague();
-  // }
 }

@@ -17,7 +17,7 @@ export class BlagueService {
   async InsertNewBlague(dto: CreateBlagueDto) {
     const newBlague = await this.prisma.blague.create({
       data: {
-        blagues: dto.text,
+        blagues: dto.blagues,
         reponse: dto.reponse,
       },
     });
@@ -31,13 +31,4 @@ export class BlagueService {
       },
     });
   }
-
-  // async getRandomBlague() {
-  //   const blagues = await this.prisma.blague.findMany();
-  //   if (blagues.length === 0) {
-  //     throw new Error('Aucune blague disponible');
-  //   }
-  //   const randomIndex = Math.floor(Math.random() * blagues.length);
-  //   return blagues[randomIndex];
-  // }
 }

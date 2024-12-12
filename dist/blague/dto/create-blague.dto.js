@@ -17,9 +17,9 @@ exports.CreateBlagueDto = CreateBlagueDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateBlagueDto.prototype, "text", void 0);
+], CreateBlagueDto.prototype, "blagues", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateBlagueDto.prototype, "id", void 0);
+], CreateBlagueDto.prototype, "reponse", void 0);
 //# sourceMappingURL=create-blague.dto.js.map

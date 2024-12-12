@@ -1,16 +1,14 @@
-
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-
 generator client {
   provider = "prisma-client-js"
 }
- 
+
 model blague {
-  id    Int    @id @default(autoincrement())
-  blagues   String
-  reponse   String
+  id      Int    @id @default(autoincrement())
+  blagues String
+  reponse String
 }

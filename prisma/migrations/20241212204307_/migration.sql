@@ -1,7 +1,6 @@
 -- CreateTable
 CREATE TABLE `blague` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `blagues` VARCHAR(191) NOT NULL,
     `reponse` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`id`)

@@ -26,7 +26,7 @@ let BlagueService = class BlagueService {
     async InsertNewBlague(dto) {
         const newBlague = await this.prisma.blague.create({
             data: {
-                blagues: dto.text,
+                blagues: dto.blagues,
                 reponse: dto.reponse,
             },
         });

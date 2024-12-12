@@ -6,19 +6,19 @@ export declare class BlagueService {
     getAllBlague(): Promise<{
         totalResults: number;
         blagues: {
-            id: number;
             blagues: string;
             reponse: string;
+            id: number;
         }[];
     }>;
     InsertNewBlague(dto: CreateBlagueDto): Promise<{
-        id: number;
         blagues: string;
         reponse: string;
+        id: number;
     }>;
     GetBlagueViaId(id: number): Promise<{
-        id: number;
         blagues: string;
         reponse: string;
+        id: number;
     }[]>;
 }
