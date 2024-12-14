@@ -18,9 +18,9 @@ async function bootstrap() {
 
   // Configuration de Swagger
   const config = new DocumentBuilder()
-    .setTitle('CaramBar Fou API')
+    .setTitle('CaramBar API Lioxyze')
     .setDescription(
-      'Une API rapide pour consulter et créer des blagues Carambar.',
+      'LAPI CaramBar Fou te permet de récupérer des blagues Carambar en un clin dœil ! Super rapide et facile à intégrer, elle te livre les meilleures blagues pour ajouter une touche dhumour à tes projets.',
     )
     .setVersion('1.0')
     .addTag('Blagues')
