@@ -44,3 +44,10 @@ npm run start:dev
 - `GET /blagues/random` : Consulter une blague aléatoire.
 
 Consultez la documentation complète sur [Swagger](https://malabar-1805984ed8b4.herokuapp.com/api-docs#/).
+
+---
+
+## Liens utiles
+- [Repo GitHub Backend](https://github.com/Lioxyze/Carambar_Back)
+- [Repo GitHub Frontend](https://github.com/Lioxyze/Carambar_Front)
+- [Documentation Swagger](https://malabar-1805984ed8b4.herokuapp.com/api-docs#/)
