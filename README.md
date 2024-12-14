@@ -1,52 +1,46 @@
-Backend (NestJS avec Prisma)
-Description
-L'API Carambar permet de gérer des blagues avec des endpoints pour ajouter, consulter, et récupérer des blagues aléatoires. L'API est construite avec NestJS et utilise Prisma pour interagir avec une base de données SQLite.
+# Carambar API
 
-Technologies utilisées
-Node.js
-NestJS
-Prisma
-SQLite
-Installation et lancement du backend
-Clonez ce repo :
+## Description
+L'API Carambar permet de gérer et de consulter des blagues via une API REST. Ce projet suit une architecture MVC et utilise un environnement comprenant NestJS, Prisma, MySQL, et Swagger pour la documentation.
 
-bash
-Copier le code
-git clone https://github.com/Lioxyze/Carambar_Back
-Installez les dépendances :
+## Fonctionnalités principales
+- Ajouter une blague en base de données (via Postman).
+- Consulter toutes les blagues.
+- Consulter une blague spécifique par son ID.
+- Consulter une blague aléatoire.
+- API versionnée et documentée avec Swagger.
 
-bash
-Copier le code
-cd Carambar_Back
+## Déploiement
+L'API est déployée sur [Heroku](https://www.heroku.com/).
+- [Lien vers Swagger](https://malabar-1805984ed8b4.herokuapp.com/api-docs#/)
+
+## Installation locale
+1. Clonez le repository :
+```bash
+https://github.com/Lioxyze/Carambar_Back.git
+```
+2. Installez les dépendances :
+```bash
 npm install
-Lancez le serveur de développement :
-
-bash
-Copier le code
+```
+3. Configurez les variables d'environnement dans un fichier `.env` :
+```
+DATABASE_URL=<votre_url_de_base_de_données>
+PORT=3000
+```
+4. Exécutez les migrations Prisma :
+```bash
+npx prisma migrate dev
+```
+5. Lancez le serveur en mode développement :
+```bash
 npm run start:dev
-L'API sera disponible sur http://localhost:3000.
+```
 
-Endpoints disponibles
-POST /blagues : Ajouter une nouvelle blague.
+## Endpoints
+- `POST /blagues` : Ajouter une blague.
+- `GET /blagues` : Consulter toutes les blagues.
+- `GET /blagues/:id` : Consulter une blague spécifique par ID.
+- `GET /blagues/random` : Consulter une blague aléatoire.
 
-Body :
-json
-Copier le code
-{
-  "blagues": "Une blague ici",
-  "reponse": "Une réponse ici"
-}
-GET /blagues : Obtenir toutes les blagues.
-
-GET /blagues/:id : Obtenir une blague par son ID.
-
-GET /blagues/random : Obtenir une blague aléatoire.
-
-Déploiement en ligne
-L'API est déployée sur Heroku :
-
-Voir l'API en ligne
-Documentation Swagger
-L'API est documentée avec Swagger. Consultez la documentation ici :
-
-Accéder à Swagger
+Consultez la documentation complète sur [Swagger](https://malabar-1805984ed8b4.herokuapp.com/api-docs#/).
