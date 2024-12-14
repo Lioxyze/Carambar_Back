@@ -38,9 +38,9 @@ npm run start:dev
 ```
 
 ## Endpoints
-- `POST /blagues` : Ajouter une blague.
-- `GET /blagues` : Consulter toutes les blagues.
-- `GET /blagues/:id` : Consulter une blague spécifique par ID.
+- `POST /create` : Ajouter une blague.
+- `GET /blague` : Consulter toutes les blagues.
+- `GET /blague/:id` : Consulter une blague spécifique par ID.
 - `GET /blagues/random` : Consulter une blague aléatoire.
 
 Consultez la documentation complète sur [Swagger](https://malabar-1805984ed8b4.herokuapp.com/api-docs#/).
