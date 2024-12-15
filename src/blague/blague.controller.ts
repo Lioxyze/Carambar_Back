@@ -45,4 +45,15 @@ export class BlagueController {
   GetBlagueViaId(@Param('id') id: string) {
     return this.blagueService.GetBlagueViaId(Number(id));
   }
+
+  @Get('/blague/random')
+  @ApiOperation({ summary: 'Récupérer une blague aléatoire' })
+  @ApiResponse({
+    status: 200,
+    description: 'Blague aléatoire récupérée avec succès.',
+  })
+  @ApiResponse({ status: 404, description: 'Aucune blague trouvée.' })
+  getRandomBlague() {
+    return this.blagueService.getRandomBlague();
+  }
 }
