@@ -34,20 +34,15 @@ export class BlagueService {
 
   async getRandomBlague() {
     try {
-      // Compter le nombre de blagues dans la base de données
-      const totalBlagues = await this.prisma.blague.count();
+      // Récupérer une blague aléatoire sans calcul de total
+      const randomBlague = await this.prisma.blague.findFirst({
+        orderBy: { id: 'desc' }, // Tri par ordre décroissant pour éviter des décalages inutiles
+        skip: Math.floor(Math.random() * 100), // Skip aléatoire basé sur une valeur arbitraire, ajustez selon les besoins
+      });
 
-      if (totalBlagues === 0) {
+      if (!randomBlague) {
         return { message: 'Aucune blague trouvée.' };
       }
-
-      // Générer un index aléatoire
-      const randomIndex = Math.floor(Math.random() * totalBlagues);
-
-      // Récupérer une blague aléatoire
-      const randomBlague = await this.prisma.blague.findFirst({
-        skip: randomIndex,
-      });
 
       return randomBlague;
     } catch (error) {
