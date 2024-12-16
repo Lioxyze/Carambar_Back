@@ -40,16 +40,20 @@ export class BlagueService {
         return { message: 'Aucune blague trouvée.' };
       }
 
+      // Générer un index aléatoire
       const randomIndex = Math.floor(Math.random() * count);
-      const randomBlague = await this.prisma.blague.findFirst({
+
+      // Récupérer une blague en sautant jusqu'à l'index
+      const randomBlague = await this.prisma.blague.findMany({
         skip: randomIndex,
+        take: 1, // Limiter à une seule blague
       });
 
-      if (!randomBlague) {
+      if (!randomBlague.length) {
         return { message: 'Erreur lors de la récupération de la blague.' };
       }
 
-      return randomBlague;
+      return randomBlague[0]; // Retourne la blague
     } catch (error) {
       console.error('Erreur Prisma :', error.message);
       return { message: 'Une erreur est survenue.' };
