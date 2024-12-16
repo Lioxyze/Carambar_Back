@@ -33,11 +33,7 @@ export class BlagueService {
   }
 
   async getRandomBlague() {
-    const count = await this.prisma.blague.count(); // Compte le nombre total de blagues.
-    if (count === 0) {
-      return { message: 'Aucune blague trouvée.' }; // Si aucune blague n'existe.
-    }
-    const randomIndex = Math.floor(Math.random() * count); // Génère un index aléatoire.
+    const randomIndex = Math.floor(Math.random()); // Génère un index aléatoire.
     const randomBlague = await this.prisma.blague.findMany({
       skip: randomIndex,
       take: 1,
