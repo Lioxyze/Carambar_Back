@@ -33,11 +33,21 @@ export class BlagueService {
   }
 
   async getRandomBlague() {
-    const randomIndex = Math.floor(Math.random()); // Génère un index aléatoire.
+    const count = await this.prisma.blague.count();
+    console.log('Total de blagues :', count);
+    if (count === 0) {
+      return { message: 'Aucune blague trouvée.' };
+    }
+
+    const randomIndex = Math.floor(Math.random() * count);
+    console.log('Index aléatoire :', randomIndex);
+
     const randomBlague = await this.prisma.blague.findMany({
       skip: randomIndex,
       take: 1,
     });
-    return randomBlague[0]; // Retourne la première (et unique) blague sélectionnée.
+    console.log('Blague récupérée :', randomBlague);
+
+    return randomBlague[0];
   }
 }
