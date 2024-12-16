@@ -34,10 +34,7 @@ export class BlagueService {
 
   async getRandomBlague() {
     try {
-      // Récupérer une blague aléatoire
-      const randomBlague = await this.prisma.blague.findFirst({
-        orderBy: { id: 'desc' }, // Tri par ordre décroissant
-      });
+      const randomBlague = await this.prisma.blague.findFirst({});
 
       if (!randomBlague) {
         return { message: 'Aucune blague trouvée.' };
