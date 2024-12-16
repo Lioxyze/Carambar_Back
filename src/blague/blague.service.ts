@@ -34,19 +34,27 @@ export class BlagueService {
 
   async getRandomBlague() {
     try {
-      const randomBlague = await this.prisma.blague.findFirst({
-        orderBy: { id: 'desc' }, // Assure une cohérence dans l'ordre
-        skip: Math.floor(Math.random() * (await this.prisma.blague.count())),
-      });
+      // Compter le nombre de blagues dans la base de données
+      const totalBlagues = await this.prisma.blague.count();
 
-      if (!randomBlague) {
+      if (totalBlagues === 0) {
         return { message: 'Aucune blague trouvée.' };
       }
+
+      // Générer un index aléatoire
+      const randomIndex = Math.floor(Math.random() * totalBlagues);
+
+      // Récupérer une blague aléatoire
+      const randomBlague = await this.prisma.blague.findFirst({
+        skip: randomIndex,
+      });
 
       return randomBlague;
     } catch (error) {
       console.error('Erreur dans getRandomBlague:', error.message);
-      throw new Error('Une erreur est survenue lors de la récupération.');
+      throw new Error(
+        'Une erreur est survenue lors de la récupération de la blague.',
+      );
     }
   }
 }
