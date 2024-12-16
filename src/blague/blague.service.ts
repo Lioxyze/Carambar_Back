@@ -34,10 +34,9 @@ export class BlagueService {
 
   async getRandomBlague() {
     try {
-      // Récupérer une blague aléatoire sans calcul de total
+      // Récupérer une blague aléatoire
       const randomBlague = await this.prisma.blague.findFirst({
-        orderBy: { id: 'desc' }, // Tri par ordre décroissant pour éviter des décalages inutiles
-        skip: Math.floor(Math.random() * 100), // Skip aléatoire basé sur une valeur arbitraire, ajustez selon les besoins
+        orderBy: { id: 'desc' }, // Tri par ordre décroissant
       });
 
       if (!randomBlague) {
