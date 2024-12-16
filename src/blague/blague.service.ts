@@ -25,7 +25,7 @@ export class BlagueService {
   }
 
   async GetBlagueViaId(id: number) {
-    return this.prisma.blague.findMany({
+    return this.prisma.blague.findUnique({
       where: {
         id: id,
       },
@@ -33,15 +33,11 @@ export class BlagueService {
   }
 
   async getRandomBlague() {
-    const count = await this.prisma.blague.count(); // Compte le nombre total de blagues.
-    if (count === 0) {
-      return { message: 'Aucune blague trouvée.' }; // Si aucune blague n'existe.
+    const blagues = await this.prisma.blague.findMany();
+    if (blagues.length === 0) {
+      throw new Error('Aucune blague trouvée');
     }
-    const randomIndex = Math.floor(Math.random() * count); // Génère un index aléatoire.
-    const randomBlague = await this.prisma.blague.findMany({
-      skip: randomIndex,
-      take: 1,
-    });
-    return randomBlague[0]; // Retourne la première (et unique) blague sélectionnée.
+    const randomIndex = Math.floor(Math.random() * blagues.length);
+    return blagues[randomIndex];
   }
 }
