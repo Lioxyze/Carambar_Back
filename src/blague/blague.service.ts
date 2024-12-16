@@ -33,21 +33,26 @@ export class BlagueService {
   }
 
   async getRandomBlague() {
-    const count = await this.prisma.blague.count();
-    console.log('Total de blagues :', count);
-    if (count === 0) {
-      return { message: 'Aucune blague trouvée.' };
+    try {
+      const count = await this.prisma.blague.count();
+
+      if (count === 0) {
+        return { message: 'Aucune blague trouvée.' };
+      }
+
+      const randomIndex = Math.floor(Math.random() * count);
+      const randomBlague = await this.prisma.blague.findFirst({
+        skip: randomIndex,
+      });
+
+      if (!randomBlague) {
+        return { message: 'Erreur lors de la récupération de la blague.' };
+      }
+
+      return randomBlague;
+    } catch (error) {
+      console.error('Erreur Prisma :', error.message);
+      return { message: 'Une erreur est survenue.' };
     }
-
-    const randomIndex = Math.floor(Math.random() * count);
-    console.log('Index aléatoire :', randomIndex);
-
-    const randomBlague = await this.prisma.blague.findMany({
-      skip: randomIndex,
-      take: 1,
-    });
-    console.log('Blague récupérée :', randomBlague);
-
-    return randomBlague[0];
   }
 }
