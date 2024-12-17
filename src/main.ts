@@ -6,17 +6,14 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Activer CORS
   app.enableCors();
 
-  // Validation globale
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
     }),
   );
 
-  // Configuration de Swagger
   const config = new DocumentBuilder()
     .setTitle('CaramBar API Lioxyze')
     .setDescription(
@@ -30,7 +27,6 @@ async function bootstrap() {
 
   SwaggerModule.setup('api-docs', app, document);
 
-  // Démarrer l'application
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
